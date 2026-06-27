@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 7640788742851267558}
   - component: {fileID: 3923143946979814602}
   - component: {fileID: 2637842745291526803}
-  - component: {fileID: 9071022715772281214}
+  - component: {fileID: 6064455197558145254}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: Enemy Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -133,7 +133,7 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
@@ -141,7 +141,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!114 &9071022715772281214
+--- !u!114 &6064455197558145254
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,8 +150,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 5218663951540380269}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7de6f17a26546cd49a4fa144fd2d418f, type: 3}
+  m_Script: {fileID: 11500000, guid: 65b4e54c0a33a804ebe171e5f8f6a627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
   damage: 1
-  hitEffect: {fileID: 4398128806220693233, guid: bd3eae60807494146a635a5465852b0b, type: 3}
+  lifeTime: 10

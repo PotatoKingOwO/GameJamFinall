@@ -1,18 +1,19 @@
 using UnityEngine;
-using UnityEngine.AI;
 
-public class GoToPlayer : MonoBehaviour
+public class RangedAttack : MonoBehaviour
 {
-    public NavMeshAgent agent;
+    public float cooldown = 1.5f;
+
     public GameObject player;
+    public GameObject bullet;
+    public Transform muzzle;
+    public float speed = 10f;
 
     [Header("Detection")]
     public float activationDistance = 10f;
 
-    [Header("Offset")]
-    public float stopDistance = 1f;
-
     bool isActive = false;
+    float nextShootTime = 0f;
 
     void Start()
     {
@@ -20,8 +21,6 @@ public class GoToPlayer : MonoBehaviour
         {
             player = GameObject.FindGameObjectWithTag("Player");
         }
-
-        agent.isStopped = true;
     }
 
     void Update()
@@ -33,16 +32,29 @@ public class GoToPlayer : MonoBehaviour
         if (!isActive && distance <= activationDistance)
         {
             isActive = true;
-            agent.isStopped = false;
         }
 
         if (!isActive) return;
 
-        Vector3 direction = (transform.position - player.transform.position).normalized;
+        if (Time.time >= nextShootTime)
+        {
+            Shoot();
+            nextShootTime = Time.time + cooldown;
+        }
+    }
 
-        Vector3 targetPosition = player.transform.position + direction * stopDistance;
+    void Shoot()
+    {
+        Vector3 direction = (player.transform.position - muzzle.position).normalized;
 
-        agent.SetDestination(targetPosition);
+        GameObject b = Instantiate(bullet, muzzle.position, Quaternion.LookRotation(direction));
+
+        Rigidbody rb = b.GetComponent<Rigidbody>();
+
+        if (rb != null)
+        {
+            rb.linearVelocity = direction * speed;
+        }
     }
 
     void OnDrawGizmosSelected()
