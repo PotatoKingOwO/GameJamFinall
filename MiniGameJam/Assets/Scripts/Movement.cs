@@ -31,6 +31,12 @@ public class Movement : MonoBehaviour
     [SerializeField] float staminaDrain = 25f;
     [SerializeField] float staminaRegen = 20f;
 
+    [Header("Weapon Bob")]
+    [SerializeField] Transform weapon;
+    [SerializeField] float bobSpeed = 8f;
+    [SerializeField] float bobAmount = 0.05f;
+    [SerializeField] float bobSmoothing = 8f;
+
     private float currentStamina;
     private bool canSprint = true;
 
@@ -46,6 +52,9 @@ public class Movement : MonoBehaviour
     Vector2 currentDirVelocity;
 
     float startSpeed;
+
+    Vector3 weaponStartPos;
+    float bobTimer;
 
     void Start()
     {
@@ -70,6 +79,11 @@ public class Movement : MonoBehaviour
             cam = Camera.main;
 
         cam.fieldOfView = normalFOV;
+
+        if (weapon != null)
+        {
+            weaponStartPos = weapon.localPosition;
+        }
     }
 
     void Update()
@@ -78,6 +92,7 @@ public class Movement : MonoBehaviour
 
         UpdateMouse();
         UpdateMove();
+        UpdateWeaponBob();
 
         if (sprintBar != null)
             sprintBar.value = currentStamina;
@@ -166,5 +181,38 @@ public class Movement : MonoBehaviour
             Vector3.up * velocityY;
 
         controller.Move(velocity * Time.deltaTime);
+    }
+
+    void UpdateWeaponBob()
+    {
+        if (weapon == null) return;
+
+        bool isMoving = Input.GetAxisRaw("Horizontal") != 0 ||
+                        Input.GetAxisRaw("Vertical") != 0;
+
+        if (isGrounded && isMoving)
+        {
+            bobTimer += Time.deltaTime * bobSpeed;
+
+            float bobOffset = Mathf.Sin(bobTimer) * bobAmount;
+
+            Vector3 targetPos = weaponStartPos + new Vector3(0f, bobOffset, 0f);
+
+            weapon.localPosition = Vector3.Lerp(
+                weapon.localPosition,
+                targetPos,
+                Time.deltaTime * bobSmoothing
+            );
+        }
+        else
+        {
+            bobTimer = 0f;
+
+            weapon.localPosition = Vector3.Lerp(
+                weapon.localPosition,
+                weaponStartPos,
+                Time.deltaTime * bobSmoothing
+            );
+        }
     }
 }

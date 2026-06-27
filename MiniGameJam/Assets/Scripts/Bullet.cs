@@ -3,6 +3,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public int damage = 10;
+    public GameObject hitEffect; 
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -13,6 +14,12 @@ public class Bullet : MonoBehaviour
             if (health != null)
             {
                 health.TakeDamage(damage);
+                if (hitEffect != null)
+                {
+                    ContactPoint contact = collision.contacts[0];
+
+                    Instantiate(hitEffect, contact.point, Quaternion.LookRotation(contact.normal));
+                }
             }
         }
 
