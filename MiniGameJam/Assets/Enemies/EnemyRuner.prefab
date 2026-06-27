@@ -35,7 +35,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.01764, y: 1.48, z: 19.39331}
-  m_LocalScale: {x: 1, y: 2, z: 0.01}
+  m_LocalScale: {x: 1.69, y: 2, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -73,7 +73,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 190ae4545da729c4cb78171087e1a4b9, type: 2}
+  - {fileID: 2100000, guid: bab98e6dbd19fb6489802fa14693f540, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -144,8 +144,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   health: 15
-  normalMaterial: {fileID: 2100000, guid: 190ae4545da729c4cb78171087e1a4b9, type: 2}
-  hitMaterial: {fileID: 2100000, guid: c32a3a07897cdf24bbb228ae09e54de7, type: 2}
+  normalMaterial: {fileID: 2100000, guid: bab98e6dbd19fb6489802fa14693f540, type: 2}
+  hitMaterial: {fileID: 2100000, guid: 53180774f82e55c4bb822182a5034d2f, type: 2}
   rend: {fileID: 6935388070061801391}
 --- !u!195 &4091395751854915738
 NavMeshAgent:
