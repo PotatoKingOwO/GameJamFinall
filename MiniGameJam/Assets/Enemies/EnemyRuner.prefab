@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 7283677673834176045}
   - component: {fileID: 8350077897741025133}
   - component: {fileID: 4536501730795610252}
+  - component: {fileID: 241299498562235870}
   m_Layer: 7
   m_Name: EnemyRuner
   m_TagString: Enemy
@@ -183,6 +184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   agent: {fileID: 4091395751854915738}
   player: {fileID: 0}
+  animator: {fileID: 0}
   activationDistance: 25
   stopDistance: 0.6
 --- !u!114 &8350077897741025133
@@ -218,5 +220,27 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.29, y: 1, z: 32.6}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.2899996, y: 1, z: 63.290977}
+  m_Center: {x: 0, y: 0, z: -1.7609596}
+--- !u!95 &241299498562235870
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7602353155494059518}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 17ab3dbfb83a0c340bb632f31aaef092, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

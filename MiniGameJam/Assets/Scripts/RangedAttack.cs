@@ -15,12 +15,16 @@ public class RangedAttack : MonoBehaviour
     bool isActive = false;
     float nextShootTime = 0f;
 
+    Health health;
+
     void Start()
     {
         if (player == null)
         {
             player = GameObject.FindGameObjectWithTag("Player");
         }
+
+        health = GetComponent<Health>();
     }
 
     void Update()
@@ -29,7 +33,7 @@ public class RangedAttack : MonoBehaviour
 
         float distance = Vector3.Distance(transform.position, player.transform.position);
 
-        if (!isActive && distance <= activationDistance)
+        if (!isActive && (distance <= activationDistance || (health != null && health.alerted)))
         {
             isActive = true;
         }

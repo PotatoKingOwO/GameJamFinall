@@ -11,10 +11,10 @@ public class Health : MonoBehaviour
 
     public Renderer rend;
 
+    public bool alerted = false;
+
     void Start()
     {
-
-
         if (normalMaterial != null)
             rend.material = normalMaterial;
     }
@@ -22,6 +22,8 @@ public class Health : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
+
+        alerted = true;
 
         StartCoroutine(FlashMaterial());
 
