@@ -146,6 +146,7 @@ MonoBehaviour:
   normalMaterial: {fileID: 2100000, guid: 95f8de7a268dd57488118971421c7dbc, type: 2}
   hitMaterial: {fileID: 2100000, guid: 9b94b62b5e401d349b489f6d02cba187, type: 2}
   rend: {fileID: 7214223326537747457}
+  alerted: 0
 --- !u!195 &9064930659322919128
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -180,11 +181,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2133ca74d5dba64a848d1765e142039, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  cooldown: 1
+  cooldown: 2
   player: {fileID: 0}
   bullet: {fileID: 5218663951540380269, guid: 3870e44c69249ba45abd5acb6f321a6a, type: 3}
   muzzle: {fileID: 5142317928002737337}
-  speed: 100
+  speed: 50
   activationDistance: 25
 --- !u!1 &9029475757604808853
 GameObject:
