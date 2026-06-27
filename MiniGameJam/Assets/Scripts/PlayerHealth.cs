@@ -34,4 +34,23 @@ public class PlayerHealth : MonoBehaviour
     {
         Debug.Log("You Died!");
     }
+
+    public bool TryToHeal()
+    {
+        if (playerHealth < 5)
+        {
+            playerHealth++;
+
+            if (healthBar != null)
+            {
+                healthBar.value = playerHealth;
+            }
+
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
