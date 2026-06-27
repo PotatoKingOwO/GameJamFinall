@@ -4,6 +4,7 @@ public class Bullet : MonoBehaviour
 {
     public int damage = 10;
     public GameObject hitEffect; 
+    public GameObject hitEffectNotEnemy;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -22,7 +23,13 @@ public class Bullet : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            ContactPoint contact = collision.contacts[0];
 
-        Destroy(gameObject);
+            Instantiate(hitEffectNotEnemy, contact.point, Quaternion.LookRotation(contact.normal));
+        }
+
+            Destroy(gameObject);
     }
 }

@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d22a7f2a3f8e81469a75cd90f2a55f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  health: 10
+  health: 9
   normalMaterial: {fileID: 2100000, guid: 95f8de7a268dd57488118971421c7dbc, type: 2}
   hitMaterial: {fileID: 2100000, guid: 9b94b62b5e401d349b489f6d02cba187, type: 2}
   rend: {fileID: 7214223326537747457}
