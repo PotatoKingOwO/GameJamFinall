@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7de6f17a26546cd49a4fa144fd2d418f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  damage: 9
+  damage: 6
   lifeTime: 5
   hitEffect: {fileID: 4398128806220693233, guid: bd3eae60807494146a635a5465852b0b, type: 3}
   hitEffectNotEnemy: {fileID: 4398128806220693233, guid: c819fed15bd98e945ba0b4443b0fd0b4, type: 3}
