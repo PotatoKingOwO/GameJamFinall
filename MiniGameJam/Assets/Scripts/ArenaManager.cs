@@ -12,6 +12,9 @@ public class ArenaManager : MonoBehaviour
     public GameObject doors;
     public GameObject key;
 
+    [Header("Music")]
+    public GameObject musicObject;
+
     [Header("Waves")]
     public Wave[] waves;
 
@@ -20,7 +23,6 @@ public class ArenaManager : MonoBehaviour
 
     void Start()
     {
-        // Vypnutí všech nepøátel
         foreach (Wave wave in waves)
         {
             foreach (GameObject enemy in wave.enemies)
@@ -30,11 +32,9 @@ public class ArenaManager : MonoBehaviour
             }
         }
 
-        // Klíè je schovaný
         if (key != null)
             key.SetActive(false);
 
-        // Dveøe otevøené
         if (doors != null)
             doors.SetActive(false);
     }
@@ -56,12 +56,15 @@ public class ArenaManager : MonoBehaviour
 
         if (currentWave >= waves.Length)
         {
-            // Konec arény
             if (doors != null)
                 doors.SetActive(false);
 
             if (key != null)
                 key.SetActive(true);
+
+            // ?? zapnout hudbu po boji
+            if (musicObject != null)
+                musicObject.SetActive(true);
 
             enabled = false;
             return;
@@ -96,6 +99,10 @@ public class ArenaManager : MonoBehaviour
 
             if (doors != null)
                 doors.SetActive(true);
+
+            // ?? vypnout hudbu bìhem boje
+            if (musicObject != null)
+                musicObject.SetActive(false);
 
             StartNextWave();
         }

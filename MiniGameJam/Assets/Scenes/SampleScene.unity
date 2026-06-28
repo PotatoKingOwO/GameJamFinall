@@ -88332,6 +88332,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   doors: {fileID: 769338541}
   key: {fileID: 1999188831}
+  musicObject: {fileID: 239663842}
   waves:
   - enemies:
     - {fileID: 1780590991}

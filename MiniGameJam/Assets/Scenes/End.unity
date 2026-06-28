@@ -301,7 +301,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 951536680}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 04b677e2b632c5249bf8d7b0c3852c75, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: c4fdfd4d591f2bf4bb1a9290f97aae6a, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -414,7 +414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f2111089d1abf042bcac45277784d14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RestartGame
-  restartAfter: 5
+  restartAfter: 90
 --- !u!1 &1211378925
 GameObject:
   m_ObjectHideFlags: 0
