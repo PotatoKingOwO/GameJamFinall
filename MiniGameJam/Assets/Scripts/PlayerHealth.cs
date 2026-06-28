@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -51,6 +52,8 @@ public class PlayerHealth : MonoBehaviour
     public void Die()
     {
         Debug.Log("You Died!");
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public bool TryToHeal()
@@ -60,15 +63,11 @@ public class PlayerHealth : MonoBehaviour
             playerHealth++;
 
             if (healthBar != null)
-            {
                 healthBar.value = playerHealth;
-            }
 
             return true;
         }
-        else
-        {
-            return false;
-        }
+
+        return false;
     }
 }
