@@ -37,6 +37,14 @@ public class Movement : MonoBehaviour
     [SerializeField] float bobAmount = 0.05f;
     [SerializeField] float bobSmoothing = 8f;
 
+    [Header("Audio")]
+    [SerializeField] AudioSource movementAudio;
+    [SerializeField] AudioSource sfxAudio;
+
+    [SerializeField] AudioClip walkSound;
+    [SerializeField] AudioClip runSound;
+    [SerializeField] AudioClip jumpSound;
+
     private float currentStamina;
     private bool canSprint = true;
 
@@ -81,9 +89,16 @@ public class Movement : MonoBehaviour
         cam.fieldOfView = normalFOV;
 
         if (weapon != null)
-        {
             weaponStartPos = weapon.localPosition;
+
+        if (movementAudio != null)
+        {
+            movementAudio.playOnAwake = false;
+            movementAudio.loop = true;
         }
+
+        if (sfxAudio != null)
+            sfxAudio.playOnAwake = false;
     }
 
     void Update()
@@ -93,6 +108,7 @@ public class Movement : MonoBehaviour
         UpdateMouse();
         UpdateMove();
         UpdateWeaponBob();
+        UpdateFootsteps();
 
         if (sprintBar != null)
             sprintBar.value = currentStamina;
@@ -171,6 +187,9 @@ public class Movement : MonoBehaviour
         if (isGrounded && Input.GetButtonDown("Jump"))
         {
             velocityY = Mathf.Sqrt(jumpHeight * -2f * gravity);
+
+            if (sfxAudio != null && jumpSound != null)
+                sfxAudio.PlayOneShot(jumpSound);
         }
 
         velocityY += gravity * Time.deltaTime;
@@ -182,15 +201,14 @@ public class Movement : MonoBehaviour
 
         controller.Move(velocity * Time.deltaTime);
     }
-
     void UpdateWeaponBob()
     {
         if (weapon == null) return;
 
-        bool isMoving = Input.GetAxisRaw("Horizontal") != 0 ||
-                        Input.GetAxisRaw("Vertical") != 0;
+        bool isMoving = currentDir.magnitude > 0.1f;
+        bool movingOnGround = isGrounded && isMoving;
 
-        if (isGrounded && isMoving)
+        if (movingOnGround)
         {
             bobTimer += Time.deltaTime * bobSpeed;
 
@@ -214,5 +232,34 @@ public class Movement : MonoBehaviour
                 Time.deltaTime * bobSmoothing
             );
         }
+    }
+
+    void UpdateFootsteps()
+    {
+        if (movementAudio == null) return;
+
+        bool isMoving = currentDir.magnitude > 0.1f && isGrounded;
+
+        float targetVolume = 0f;
+        float targetPitch = 1f;
+
+        if (isMoving)
+        {
+            bool sprinting = Speed >= SprintSpeed;
+
+            targetVolume = 1f;
+
+            targetPitch = sprinting ? 1.25f : 1f;
+        }
+
+        if (movementAudio.clip != walkSound && walkSound != null)
+        {
+            movementAudio.clip = walkSound;
+            movementAudio.loop = true;
+            movementAudio.Play();
+        }
+
+        movementAudio.volume = Mathf.Lerp(movementAudio.volume, targetVolume, Time.deltaTime * 10f);
+        movementAudio.pitch = Mathf.Lerp(movementAudio.pitch, targetPitch, Time.deltaTime * 10f);
     }
 }

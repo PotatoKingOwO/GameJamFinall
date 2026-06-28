@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4311276120058643582}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hearth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,13 +80,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: f57ca27e378bb7f43befb587b0402ea9, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: -5477749408508380018, guid: f57ca27e378bb7f43befb587b0402ea9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.62
       objectReference: {fileID: 0}
     - target: {fileID: -5477749408508380018, guid: f57ca27e378bb7f43befb587b0402ea9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.89
+      value: 1.1081544
       objectReference: {fileID: 0}
     - target: {fileID: -5477749408508380018, guid: f57ca27e378bb7f43befb587b0402ea9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -99,6 +103,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f57ca27e378bb7f43befb587b0402ea9, type: 3}
       propertyPath: m_Name
       value: heart1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f57ca27e378bb7f43befb587b0402ea9, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -114,6 +122,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: f57ca27e378bb7f43befb587b0402ea9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5694590851263168199}
+    - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: f57ca27e378bb7f43befb587b0402ea9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7117659661314397363}
   m_SourcePrefab: {fileID: 100100000, guid: f57ca27e378bb7f43befb587b0402ea9, type: 3}
 --- !u!1 &8499374124137893846 stripped
 GameObject:
@@ -180,6 +191,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &7117659661314397363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8499374124137893846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172979416819e424eb60fc85542b176b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OrbitAndFloat
+  rotateSpeed: 50
+  rotateX: 0
+  rotateY: 0
+  rotateZ: 1
+  floatHeight: 0.5
+  floatSpeed: 2
 --- !u!4 &8787944861532527193 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f57ca27e378bb7f43befb587b0402ea9, type: 3}

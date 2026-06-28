@@ -3,8 +3,13 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
+    [Header("Health")]
     public int playerHealth = 100;
     public Slider healthBar;
+
+    [Header("Damage Audio")]
+    public AudioSource damageAudio;
+    public AudioClip[] damageSounds;
 
     void Start()
     {
@@ -19,6 +24,8 @@ public class PlayerHealth : MonoBehaviour
     {
         playerHealth -= damage;
 
+        PlayDamageSound();
+
         if (healthBar != null)
         {
             healthBar.value = playerHealth;
@@ -28,6 +35,17 @@ public class PlayerHealth : MonoBehaviour
         {
             Die();
         }
+    }
+
+    void PlayDamageSound()
+    {
+        if (damageAudio == null || damageSounds == null || damageSounds.Length == 0)
+            return;
+
+        AudioClip clip = damageSounds[Random.Range(0, damageSounds.Length)];
+
+        damageAudio.pitch = Random.Range(0.95f, 1.05f);
+        damageAudio.PlayOneShot(clip);
     }
 
     public void Die()

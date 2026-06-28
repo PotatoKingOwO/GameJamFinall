@@ -12,6 +12,10 @@ public class RangedAttack : MonoBehaviour
     [Header("Detection")]
     public float activationDistance = 10f;
 
+    [Header("Attack Audio")]
+    public AudioSource audioSource;
+    public AudioClip[] shootSounds;
+
     bool isActive = false;
     float nextShootTime = 0f;
 
@@ -25,6 +29,12 @@ public class RangedAttack : MonoBehaviour
         }
 
         health = GetComponent<Health>();
+
+        if (audioSource != null)
+        {
+            audioSource.playOnAwake = false;
+            audioSource.loop = false;
+        }
     }
 
     void Update()
@@ -49,6 +59,8 @@ public class RangedAttack : MonoBehaviour
 
     void Shoot()
     {
+        PlayShootSound();
+
         Vector3 direction = (player.transform.position - muzzle.position).normalized;
 
         GameObject b = Instantiate(bullet, muzzle.position, Quaternion.LookRotation(direction));
@@ -59,6 +71,17 @@ public class RangedAttack : MonoBehaviour
         {
             rb.linearVelocity = direction * speed;
         }
+    }
+
+    void PlayShootSound()
+    {
+        if (audioSource == null || shootSounds == null || shootSounds.Length == 0)
+            return;
+
+        AudioClip clip = shootSounds[Random.Range(0, shootSounds.Length)];
+
+        audioSource.pitch = Random.Range(0.95f, 1.05f);
+        audioSource.PlayOneShot(clip);
     }
 
     void OnDrawGizmosSelected()

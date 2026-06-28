@@ -7,6 +7,10 @@ public class Gun : MonoBehaviour
     public Camera cam;
     public AmmoManager ammoManager;
 
+    [Header("Audio")]
+    public AudioSource gunAudio;
+    public AudioClip shootSound;
+
     [Header("Shooting")]
     public GameObject bulletPrefab;
     public float fireRate = 10f;
@@ -36,6 +40,12 @@ public class Gun : MonoBehaviour
 
     void Shoot()
     {
+        // ?? SOUND
+        if (gunAudio != null && shootSound != null)
+        {
+            gunAudio.PlayOneShot(shootSound);
+        }
+
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
 
         Vector3 targetPoint;

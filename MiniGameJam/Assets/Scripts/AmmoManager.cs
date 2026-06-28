@@ -30,7 +30,7 @@ public class AmmoManager : MonoBehaviour
     {
         if (ammoText != null)
         {
-            ammoText.text = ammo.ToString("D3");
+            ammoText.text = ammo.ToString("D2");
         }
     }
 }
